@@ -1,0 +1,23 @@
+@use './variables.scss' as var;
+
+header{
+    background-color: var.$violet;
+    padding : 15px;
+
+    > div{
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+
+        h1{
+            font-size: 24px;
+            color : white;
+        }
+
+        svg{
+            color: white;
+            font-size: 24px;
+        }
+    }
+
+}

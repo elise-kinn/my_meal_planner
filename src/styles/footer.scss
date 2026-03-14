@@ -1,0 +1,6 @@
+@use './variables.scss' as var;
+
+footer{
+    background-color: var.$violet;
+    height: 35px;
+}

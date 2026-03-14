@@ -1,0 +1,14 @@
+@use '../variables.scss' as var;
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap : 50px;
+    padding : 30px 15px;
+
+    > div{
+        display: flex;
+        flex-direction: column;
+        gap : 20px;
+    }
+}

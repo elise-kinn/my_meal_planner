@@ -1,73 +1,25 @@
-# React + TypeScript + Vite
+# My Meal Planner Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objectifs
+- Gestion d'un planning des repas (déjeuner et dîner) sur la semaine
+- Génération d'une liste de course en fonction du planning
+- CRUD de plats à insérer dans le planning
 
-Currently, two official plugins are available:
+## Public Cible
+- Personnes en recherche d'une aide pour la gestion d'un planning des repas de la semaine 
+- Personnes organisées voulant une plateforme pour enregistrer des recettes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Fonctionnalités
+- Inscription / Connexion / Déconnexion
+- Planning hebdomadaire : Gestion des repas à partir d'une liste créer par l'utilisateur
+- Génération d'une liste de course en fonction du planning (possibles ajout d'éléments sur toutes les semaines)
+- CRUD de plats à insérer dans le planning (nom, type, ingrédients)
+- Possibilité de créer de nouveaux types de plats
 
-## React Compiler
+## Architecture de l'application
+├── Inscription
+├── Connexion
+├── Planning hebdomadaire
+├── Liste de repas
+└── Liste de course
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
