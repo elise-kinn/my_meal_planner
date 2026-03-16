@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 const Login = () => {
     return(
         <main>
@@ -14,7 +16,7 @@ const Login = () => {
                     <button className="green small-button">Se connecter</button>
                 </div>
 
-                <button className="violet">S'inscrire</button>
+                <Link to='/register' className="violet">Pas de compte ? S'inscrire</Link>
             </form>
         </main>
     )

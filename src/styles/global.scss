@@ -44,7 +44,7 @@ form{
     border-radius: 30px;
 }
 
-input[type='text']{
+input[type='text'], input[type='password']{
     background-color: $beige;
     border: none;
     border-radius: 8px;
@@ -53,25 +53,27 @@ input[type='text']{
     box-shadow: 4px 4px 0 0 #00000025;
 }
 
-button{
+button, a, input[type='submit']{
     border: none;
     border-radius: 8px;
     padding: 6px 20px;
     font-size: 14px;
     box-shadow: 4px 4px 0 0 #00000025;
+    text-align: center;
+    text-decoration: none;
 }
 
-button.green{
+.green{
     background-color: $green;
     color : $dark-green;
 }
 
-button.small-button{
+.small-button{
     width: fit-content;
     margin: auto;
 }
 
-button.violet{
+.violet{
     background-color: $dark-violet;
     color : white;
 }
