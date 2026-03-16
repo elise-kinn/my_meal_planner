@@ -77,3 +77,19 @@ button, a, input[type='submit']{
     background-color: $dark-violet;
     color : white;
 }
+
+.error{
+    color: $red-alert;
+    font-size: 11px;
+    margin-top:-15px;
+    margin-left:20px
+}
+
+input.error-input{
+    background-color: $red-alert-backgroud;
+    box-shadow: 4px 4px 0 0 #77000025;
+
+    &::placeholder{
+        color:rgba(0, 0, 0, 0.575)
+    }
+}

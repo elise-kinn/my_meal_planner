@@ -10,7 +10,7 @@ type form = {
 
 type error = {
     message: string
-    input: string
+    input: string[]
 }
 
 const Register = () => {
@@ -26,6 +26,7 @@ const Register = () => {
 
     const submitform: React.SubmitEventHandler<HTMLFormElement> = async(e) => {
         e.preventDefault();
+        setError({ message: "", input: [] })
 
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/users/register`, {
@@ -37,7 +38,7 @@ const Register = () => {
             const data = await res.json()
             console.log(data)
 
-            if(!res.ok) setError({ message: data.message, input: data.input })
+            if(!res.ok) setError({ message: data.message, input: data.emptyInput})
         } catch (error) {
             console.error(error)
         }
@@ -56,18 +57,26 @@ const Register = () => {
             <form onSubmit={submitform}>
                 <div>
                     <label htmlFor="username" className="visually-hidden">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" value={formData.username} onChange={onChangeForm}/>
+                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" className={`${error?.input.includes('username') && "error-input"}`} value={formData.username} onChange={onChangeForm}/>
+
+                    {error?.input.includes('username') && <p className="error">{error.message}</p>}
                     
                     <label htmlFor="password" className="visually-hidden">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="Mot de passe" value={formData.password} onChange={onChangeForm}/>
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" autoComplete="off" className={`${error?.input.includes('password') && "error-input"}`} value={formData.password} onChange={onChangeForm}/>
+
+                    {error?.input.includes('password') && <p className="error">{error.message}</p>}
 
                     <label htmlFor="confPassword" className="visually-hidden">Confirmation de mot de passe</label>
-                    <input type="password" name="confPassword" id="confPassword" placeholder="Confirmation de mot de passe" value={formData.confPassword} onChange={onChangeForm}/>
+                    <input type="password" name="confPassword" id="confPassword" placeholder="Confirmation de mot de passe" autoComplete="off" className={`${error?.input.includes('confPassword') && "error-input"}`} value={formData.confPassword} onChange={onChangeForm}/>
+
+                    {error?.input.includes('confPassword') && <p className="error">{error.message}</p>}
 
                     <div>
                         <input type="checkbox" name="RGPD" id="RGPD" checked={formData.RGPD} onChange={onChangeForm}/>
                         <label htmlFor="RGPD">J'accepte les conditions d'utilisation du site</label>
                     </div>
+
+                    {error?.input.includes('RGPD') && <p className="error">Accepter les conditions d'utilisation du site est obligatoire pour créer un compte</p>}
                     
                     <input type="submit" className="green small-button" value="S'inscrire"/>
                 </div>
