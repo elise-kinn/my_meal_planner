@@ -28,7 +28,12 @@ footer{
         display: flex;
         border: 1px solid var.$violet;
         font-size: 30px;
-        color : var.$violet
+        color : var.$violet;
+
+        &:hover{
+            transform: scale(0.95);
+            background-color: #e1d6ff;
+        }
     }
 }
 

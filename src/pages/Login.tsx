@@ -43,8 +43,9 @@ const Login = () => {
 
             setToken(data.token)
             setId(id_user)
-            setUsername(username)   
-
+            setUsername(username)  
+             
+            navigate('/planning')
 
         } catch (error) {
             console.error(error)

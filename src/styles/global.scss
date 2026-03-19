@@ -4,6 +4,7 @@
 @use 'footer.scss';
 @use 'pages/login.scss';
 @use 'pages/planning.scss';
+@use 'components/modale.scss';
 
 *, ::before, ::after {
     font-family: "Sour Gummy", sans-serif;
@@ -61,9 +62,10 @@ button{
 .invisible-button{
     background-color: #00000000;
     border: none;
+    display: flex;
 }
 
-a, input[type='submit']{
+a, input[type='submit'], button.visible{
     border: none;
     border-radius: 8px;
     padding: 6px 20px;

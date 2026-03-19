@@ -1,0 +1,21 @@
+@use '../variables.scss' as var;
+
+#confirmation-modale{
+    position:absolute;
+    margin: auto;
+    top : 65px;
+    right : 15px;
+    padding : 15px;
+    border-radius: 30px;
+    border : 1px solid var.$dark-violet;
+    box-shadow: 4px 4px 0 0 #00000025;
+    background-color: var.$violet;
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+
+    > p{
+        text-align: center;
+        color : white;
+    }
+}
