@@ -79,7 +79,7 @@ const Login = () => {
                     <input type="submit" className="green small-button" value="Se connecter"/>
                 </div>
 
-                <Link to='/register' className="violet">Pas de compte ? S'inscrire</Link>
+                <Link to='/register' className="visible violet">Pas de compte ? S'inscrire</Link>
             </form>
         </main>
     )

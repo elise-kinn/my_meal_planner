@@ -1,32 +1,47 @@
+import { useUser,  useView } from "../store/store"
+import { useState } from "react";
+
 import { MdArrowRight } from "react-icons/md"
 import { FaPlus } from "react-icons/fa6";
-import { useUser } from "../store/store"
+import ModaleNav from "./ModaleNav";
 
 const Footer = () => {
     const { isAuthenticated } = useUser()
-    const url:string = window.location.pathname 
+    const { currentPage } = useView()
 
-    const page = (url:string) => {
-        switch(url){
-            case '/planning':
-                return 'Planning';
-                break;
-            default:
-                return '';
-                break
+    const [isOpen, setIsOpen ] = useState<boolean>(false)
+    const closeModale = () => setIsOpen(false)
+    const openModale = () => setIsOpen(true)
+    
+    // const navItems = ["Planning", "Liste de course", "Liste des repas"]
+    const navItems = [
+        {
+            page: "Planning",
+            url: "planning"
+        },
+        {
+            page: "Liste de course",
+            url: "grocery_list"
+        },
+        {
+            page: "Liste des repas",
+            url: "meal_list"
         }
-    }
+    ]
 
-    if(!isAuthenticated()) return <footer></footer>
+    if(!isAuthenticated()) return <footer />
 
     return(
         <footer>
-            <div>
+            {   
+                isOpen && <ModaleNav items={navItems} onClose={closeModale}/>
+            }
+            <button className="invisible-button" onClick={openModale}>
                 <MdArrowRight />
-                <p>{page(url)}</p>
-            </div>
+                <p>{currentPage}</p>
+            </button>
 
-            <div><FaPlus /></div>
+            <div id="plus-div"><FaPlus /></div>
         </footer>
     )
 }

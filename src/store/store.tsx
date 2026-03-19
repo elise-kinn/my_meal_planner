@@ -2,7 +2,7 @@ import { jwtDecode } from 'jwt-decode'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-type Store = {
+type userStore = {
     id_user: number| null
     username :string|null
     token: string | null
@@ -21,11 +21,16 @@ type tokenProp = {
     exp: number
 }
 
+type viewStore = {
+    currentPage: string 
+    setCurrentPage: (currentPage:string) => void
+}
+
 // Donnée partagée ??
 // Donnée doit survivre à la navigation ?
 // Qui modifie quoi ?
 
-export const useUser = create<Store>()(
+export const useUser = create<userStore>()(
     persist(
         (set, get) => ({
 
@@ -58,4 +63,11 @@ export const useUser = create<Store>()(
 
         }), {name: 'auth-storage'}
     )
+)
+
+export const useView = create<viewStore>()(
+    (set) => ({
+        currentPage: "Planning",
+        setCurrentPage: (currentPage) => set(({ currentPage }))
+    })
 )

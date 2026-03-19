@@ -11,6 +11,8 @@
     margin: 0;
     padding: 0;
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    list-style: none;
 }
 
 header > div{
@@ -65,7 +67,7 @@ button{
     display: flex;
 }
 
-a, input[type='submit'], button.visible{
+a.visible, input[type='submit'], button.visible{
     border: none;
     border-radius: 8px;
     padding: 6px 20px;

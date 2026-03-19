@@ -80,7 +80,7 @@ const Register = () => {
                     <input type="submit" className="green small-button" value="S'inscrire"/>
                 </div>
 
-                <Link to='/' className="violet">Déjà un compte ? Se connecter</Link>
+                <Link to='/' className="visible violet">Déjà un compte ? Se connecter</Link>
 
             </form>
         </main>

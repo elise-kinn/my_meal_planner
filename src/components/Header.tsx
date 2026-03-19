@@ -3,10 +3,11 @@ import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom"
 
 import { CiLogout } from "react-icons/ci";
+import { RxCross2 } from "react-icons/rx";
 
 import { useUser } from "../store/store";
 
-import Modale from "./Modale";
+import ModaleConfirmation from "./ModaleConfirmation";
 
 const Header = () => {
     const navigate = useNavigate()
@@ -23,9 +24,11 @@ const Header = () => {
         closeModale()
     }
 
-    const logoutButtonDisplay = isAuthenticated() 
-        ? <button onClick={openModale} className="invisible-button"><CiLogout /></button>  
-        : ''
+    const logoutButtonDisplay = () => {
+        if(!isAuthenticated()) return
+        if(!isOpen) return <button onClick={openModale} className="invisible-button"><CiLogout /></button>  
+        if(isOpen) return <button onClick={openModale} className="invisible-button"><RxCross2 /></button>  
+    }
     
     if(!modaleRoot) return null
 
@@ -33,11 +36,12 @@ const Header = () => {
         <header>
             <div>
                 <h1>My Meal Planner</h1>
-                {logoutButtonDisplay}
+                {logoutButtonDisplay()}
                 {   
                     isOpen && 
                     createPortal(
-                        <Modale 
+                        <ModaleConfirmation 
+                            name="logout"
                             text="Se déconnecter ?" 
                             button1Text="Oui, se déconnecter" 
                             button2Text="Non, rester connecté·e"
