@@ -3,4 +3,32 @@
 footer{
     background-color: var.$violet;
     height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding : 5px 15px;
+    position: relative;
+
+    >div:first-of-type{
+        display: flex;
+        align-items: center;
+
+        *{
+            color : white;
+        }
+
+    }
+
+    >div:last-of-type{
+        position: relative;
+        top : -12px;
+        background-color: white;
+        border-radius: 50px;
+        padding: 15px;
+        display: flex;
+        border: 1px solid var.$violet;
+        font-size: 30px;
+        color : var.$violet
+    }
 }
+

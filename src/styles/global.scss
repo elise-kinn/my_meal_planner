@@ -3,6 +3,7 @@
 @use 'header.scss';
 @use 'footer.scss';
 @use 'pages/login.scss';
+@use 'pages/planning.scss';
 
 *, ::before, ::after {
     font-family: "Sour Gummy", sans-serif;
@@ -53,7 +54,16 @@ input[type='text'], input[type='password']{
     box-shadow: 4px 4px 0 0 #00000025;
 }
 
-button, a, input[type='submit']{
+button{
+    cursor: pointer;
+}
+
+.invisible-button{
+    background-color: #00000000;
+    border: none;
+}
+
+a, input[type='submit']{
     border: none;
     border-radius: 8px;
     padding: 6px 20px;

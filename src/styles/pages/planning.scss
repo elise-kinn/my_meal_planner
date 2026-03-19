@@ -1,0 +1,66 @@
+@use '../variables.scss' as var;
+
+#planning{
+    #div-title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 35px;
+
+        h2{
+            padding: 0;
+        }
+        svg{
+            font-size: 30px;
+        }
+    }
+
+    h3{
+        text-align: center;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    section{
+        background-color: var.$violet;
+        border-radius: 30px;
+        margin-top : 40px;
+
+        > div{
+            padding: 15px;
+
+            h4{
+                text-align: center;
+                font-weight: 300;
+                color: white;
+            }
+
+            > div {
+                background-color: var.$beige;
+                border-radius: 30px;
+                padding : 0 15px;
+
+                >div{
+                    padding : 15px 0 ;
+                    &:first-of-type{
+                        border-bottom: 1px solid var.$dark-violet;
+                    }
+                    .title{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+    
+                        h5{
+                            font-weight: 300;
+                        }
+
+                        button{
+                            display: flex;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
