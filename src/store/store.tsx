@@ -1,0 +1,61 @@
+import { jwtDecode } from 'jwt-decode'
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
+
+type Store = {
+    id_user: number| null
+    username :string|null
+    token: string | null
+
+    setUsername: (username:string) => void
+    setId: (id_user:number) => void
+    setToken: (user:string) => void
+
+    isAuthenticated: () => boolean
+    logout: () => void
+}
+
+type tokenProp = {
+    id_user : number, 
+    username: string,
+    exp: number
+}
+
+// Donnée partagée ??
+// Donnée doit survivre à la navigation ?
+// Qui modifie quoi ?
+
+export const useUser = create<Store>()(
+    persist(
+        (set, get) => ({
+
+            id_user: null, 
+            username: null, 
+            token: null, 
+
+            setId: (id_user) => set({ id_user }),
+            setUsername: (username) => set({ username }), 
+            setToken: (token) => set({ token }),
+
+            isAuthenticated: () => {
+                const token = get().token
+                if(!token) return false
+
+                try {
+                    const decoded = jwtDecode<tokenProp>(token)
+                    const currentTime = Date.now() / 1000
+                    return decoded.exp > currentTime
+                } catch {
+                    return false
+                }
+            },
+
+            logout: () => set({
+                id_user: null,
+                username : null,
+                token: null
+            })
+
+        }), {name: 'auth-storage'}
+    )
+)

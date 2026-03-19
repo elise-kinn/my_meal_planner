@@ -61,11 +61,21 @@ button, a, input[type='submit']{
     box-shadow: 4px 4px 0 0 #00000025;
     text-align: center;
     text-decoration: none;
+
+    &:hover{
+        transform: translateY(2px);
+        box-shadow: 4px 2px 0 0 #00000025;
+
+    }
 }
 
 .green{
     background-color: $green;
     color : $dark-green;
+
+    &:hover{
+        background-color: #c1dfd9;
+    }
 }
 
 .small-button{
@@ -76,6 +86,10 @@ button, a, input[type='submit']{
 .violet{
     background-color: $dark-violet;
     color : white;
+
+    &:hover{
+        background-color: #5c4f7e;
+    }
 }
 
 .error{

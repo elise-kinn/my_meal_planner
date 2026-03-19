@@ -11,11 +11,11 @@ type form = {
 type error = {
     message: string
     input: string[]
-}
+}| null
 
 const Register = () => {
 
-    const [error, setError] = useState<error>()
+    const [error, setError] = useState<error>(null)
 
     const [formData, setFormData] = useState<form>({
         username: "", 
@@ -26,7 +26,7 @@ const Register = () => {
 
     const submitform: React.SubmitEventHandler<HTMLFormElement> = async(e) => {
         e.preventDefault();
-        setError({ message: "", input: [] })
+        setError(null)
 
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/users/register`, {
@@ -36,9 +36,8 @@ const Register = () => {
             })
 
             const data = await res.json()
-            console.log(data)
 
-            if(!res.ok) setError({ message: data.message, input: data.emptyInput})
+            if(!res.ok) setError({ message: data.message, input: data.alertInput})
         } catch (error) {
             console.error(error)
         }
