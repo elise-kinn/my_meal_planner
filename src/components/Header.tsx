@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { CiLogout } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 
 import { useUser } from "../store/store";
 
-import ModaleConfirmation from "./ModaleConfirmation";
+import ModaleConfirmation from "./modales/ModaleConfirmation";
 
 const Header = () => {
     const navigate = useNavigate()
@@ -35,7 +35,9 @@ const Header = () => {
     return(
         <header>
             <div>
-                <h1>My Meal Planner</h1>
+                <Link to={'/'}>
+                    <h1>My Meal Planner</h1>
+                </Link>
                 {logoutButtonDisplay()}
                 {   
                     isOpen && 

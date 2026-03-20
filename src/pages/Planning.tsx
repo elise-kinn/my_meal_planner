@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
-import Day from "../components/day";
+import Day from "../components/Day";
 import { useUser } from "../store/store";
 
 const Planning = () => {
@@ -26,6 +26,7 @@ const Planning = () => {
                 <h2>Mon planning</h2>
                 <button className="invisible-button" onClick={() => setWeek(week + 1)}><IoMdArrowDropright/></button>
             </div>
+            
             <h3>Semaine {week}</h3>
 
             <section>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useView } from "../store/store"
+import { useView } from "../../store/store"
 
 type modaleProp = {
     items: {

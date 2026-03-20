@@ -6,19 +6,26 @@ footer{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding : 5px;
+    padding : 5px 0px 5px 15px;
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    left:0;
+    right: 0;
+    width: 100%;
     box-shadow: 0px -10px 10px 0px rgba(0, 0, 0, 0.1450980392);
 
     >button{
         align-items: center;
         margin : 15px 0;
-
+        
+        &:hover *{
+            color: var.$green;
+        }
+        
         *{
             color : white;
             font-size: 20px;
+
         }
 
     }
@@ -26,12 +33,12 @@ footer{
     #plus-div{
         position: relative;
         top : -12px;
-        right: 25px;
+        right: 40px;
         background-color: white;
         border-radius: 50px;
         padding: 15px;
         display: flex;
-        border: 1px solid var.$violet;
+        border: 3px solid var.$violet;
         font-size: 30px;
         color : var.$violet;
 

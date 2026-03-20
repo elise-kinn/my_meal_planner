@@ -17,6 +17,10 @@ header{
         svg{
             color: white;
             font-size: 24px;
+
+            &:hover{
+                color: var.$green
+            }
         }
     }
 

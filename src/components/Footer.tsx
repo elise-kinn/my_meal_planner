@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { MdArrowRight } from "react-icons/md"
 import { FaPlus } from "react-icons/fa6";
-import ModaleNav from "./ModaleNav";
+import ModaleNav from "./modales/ModaleNav";
 
 const Footer = () => {
     const { isAuthenticated } = useUser()
@@ -13,7 +13,6 @@ const Footer = () => {
     const closeModale = () => setIsOpen(false)
     const openModale = () => setIsOpen(true)
     
-    // const navItems = ["Planning", "Liste de course", "Liste des repas"]
     const navItems = [
         {
             page: "Planning",

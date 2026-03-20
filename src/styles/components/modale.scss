@@ -37,13 +37,55 @@ nav#mobile{
         }
 
         a:hover{
-            color: var.$dark-beige;
+            color: var.$green;
         }
     }
 
     *{
         color: white;
         font-weight: 100;
+    }
+}
+
+.modale.add{
+    position:fixed !important;
+    inset : 15px;
+
+    #title-div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 25px;
+
+        h2{
+            padding : 0;
+            font-weight: 400;
+            color: white;
+        }
+
+        svg{
+            font-size: 26px;
+            color: white;
+
+            &:hover{
+                color : var.$green
+            }
+        }
+    }
+
+    #inputs{
+        display: flex;
+        gap : 15px;
+        flex-direction: column;
+    }
+
+    .visible{
+        display: flex;
+        align-items: center;
+        gap : 20px;
+        justify-content: center;
+        width: fit-content;
+        margin: auto;
     }
 }
 
@@ -54,3 +96,4 @@ nav#mobile{
     width: 98vw;
     height: 100vh;
 }
+
