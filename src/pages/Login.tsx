@@ -52,7 +52,7 @@ const Login = () => {
         }
     }
 
-    const onChangeForm: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const handleChangeForm: ChangeEventHandler<HTMLInputElement> = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value})
     }
@@ -68,10 +68,10 @@ const Login = () => {
             <form onSubmit={submitForm}>
                 <div>
                     <label htmlFor="username" className="visually-hidden">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" className={`${error?.input.includes('username') && "error-input"}`} value={formData.username} onChange={onChangeForm}/>
+                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" className={`${error?.input.includes('username') && "error-input"}`} value={formData.username} onChange={handleChangeForm}/>
                     
                     <label htmlFor="password" className="visually-hidden">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="Mot de passe" autoComplete="off" className={`${error?.input.includes('password') && "error-input"}`} value={formData.password} onChange={onChangeForm}/>
+                    <input type="password" name="password" id="password" placeholder="Mot de passe" autoComplete="off" className={`${error?.input.includes('password') && "error-input"}`} value={formData.password} onChange={handleChangeForm}/>
 
                     {error && <p className="error">{error.message}</p>}
 

@@ -11,10 +11,6 @@ const Meal = ({meal}: meal) => {
     const closeModale = () =>  setIsOpen(false) 
     const openModale = () => setIsOpen(true)
 
-    const addItem = () => {
-        
-    }
-
     return (
         <div>
             <div className="title">
@@ -30,9 +26,8 @@ const Meal = ({meal}: meal) => {
                             title='Ajouter un plat'
                             button='Ajouter'
                             onClose={closeModale}
-                            onCreate={addItem}
                         >
-                            <div id="inputs">
+                            <div className="inputs-div">
                                 <input type="text" placeholder="Lasagnes, Pâtes aux oignons..."/>
                                 <select name="type" id="type">
                                     <option value="0">Par ordre alphabétique</option>

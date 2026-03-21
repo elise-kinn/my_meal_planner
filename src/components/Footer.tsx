@@ -3,16 +3,23 @@ import { useState } from "react";
 
 import { MdArrowRight } from "react-icons/md"
 import { FaPlus } from "react-icons/fa6";
+
 import ModaleNav from "./modales/ModaleNav";
+import ModaleAddMeal from "./modales/ModaleAddMeal";
+import ModaleAddMealContent from "./modales/ModaleAddMealContent";
 
 const Footer = () => {
     const { isAuthenticated } = useUser()
     const { currentPage } = useView()
 
-    const [isOpen, setIsOpen ] = useState<boolean>(false)
-    const closeModale = () => setIsOpen(false)
-    const openModale = () => setIsOpen(true)
-    
+    const [isOpenNav, setIsOpenNav ] = useState<boolean>(false)
+    const closeModaleNav = () => setIsOpenNav(false)
+    const openModaleNav = () => setIsOpenNav(true)
+
+    const [isOpenPlus, setIsOpenPlus ] = useState<boolean>(false)
+    const closeModalePlus = () => setIsOpenPlus(false)
+    const openModalePlus = () => setIsOpenPlus(true)    
+
     const navItems = [
         {
             page: "Planning",
@@ -32,15 +39,26 @@ const Footer = () => {
 
     return(
         <footer>
-            {   
-                isOpen && <ModaleNav items={navItems} onClose={closeModale}/>
-            }
-            <button className="invisible-button" onClick={openModale}>
+            { isOpenNav && <ModaleNav items={navItems} onClose={closeModaleNav}/> }
+            <button className="invisible-button" onClick={openModaleNav}>
                 <MdArrowRight />
                 <p>{currentPage}</p>
             </button>
 
-            <div id="plus-div"><FaPlus /></div>
+            { 
+                isOpenPlus &&  
+                    <ModaleAddMeal 
+                        title='Créer un plat'
+                        button='Ajouter'
+                        onClose={closeModalePlus}
+                    >
+                        <ModaleAddMealContent />
+                    </ModaleAddMeal>
+            }
+
+            <button id="plus-button" onClick={openModalePlus}>
+                <FaPlus />
+            </button>
         </footer>
     )
 }

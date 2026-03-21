@@ -7,11 +7,10 @@ type modale = {
     title: string
     button: string
     onClose: () => void
-    onCreate: () => void
     children: React.ReactNode
 }
 
-const ModaleAddMeal = ({ title, button, onClose, onCreate, children }: modale) => {
+const ModaleAddMeal = ({ title, button, onClose, children }: modale) => {
     const modaleRoot = document.querySelector('#modale-root')
     if(!modaleRoot) return null
 
@@ -28,7 +27,7 @@ const ModaleAddMeal = ({ title, button, onClose, onCreate, children }: modale) =
 
                 {children}
 
-                <button className="visible violet0" onClick={onCreate}>
+                <button className="visible violet" >
                     <FiPlus/>
                     {button}
                 </button>
