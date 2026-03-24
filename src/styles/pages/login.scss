@@ -4,6 +4,11 @@ form{
     gap : 50px;
     padding : 30px 15px;
 
+    .alert{
+        margin-top:-15px;
+        margin-left:20px;
+    }
+
     > div{
         display: flex;
         flex-direction: column;

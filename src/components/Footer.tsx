@@ -5,7 +5,7 @@ import { MdArrowRight } from "react-icons/md"
 import { FaPlus } from "react-icons/fa6";
 
 import ModaleNav from "./modales/ModaleNav";
-import ModaleAddMeal from "./modales/ModaleAddMeal";
+import ModaleBase from "./modales/ModaleBase";
 import ModaleAddMealContent from "./modales/ModaleAddMealContent";
 
 const Footer = () => {
@@ -47,13 +47,13 @@ const Footer = () => {
 
             { 
                 isOpenPlus &&  
-                    <ModaleAddMeal 
+                    <ModaleBase 
                         title='Créer un plat'
-                        button='Ajouter'
+                        type='xl'
                         onClose={closeModalePlus}
                     >
                         <ModaleAddMealContent />
-                    </ModaleAddMeal>
+                    </ModaleBase>
             }
 
             <button id="plus-button" onClick={openModalePlus}>

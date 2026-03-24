@@ -73,8 +73,7 @@ const Login = () => {
                     <label htmlFor="password" className="visually-hidden">Mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="Mot de passe" autoComplete="off" className={`${error?.input.includes('password') && "error-input"}`} value={formData.password} onChange={handleChangeForm}/>
 
-                    {error && <p className="error">{error.message}</p>}
-
+                    {error && <p className="alert red">{error.message}</p>}
 
                     <input type="submit" className="green small-button" value="Se connecter"/>
                 </div>

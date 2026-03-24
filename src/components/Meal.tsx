@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
-import ModaleAddMeal from "./modales/ModaleAddMeal";
+import ModaleBase from "./modales/ModaleBase";
 
 type meal = {
     meal:string
@@ -22,11 +22,12 @@ const Meal = ({meal}: meal) => {
 
                 { 
                     isOpen && 
-                        <ModaleAddMeal 
+                        <ModaleBase 
                             title='Ajouter un plat'
-                            button='Ajouter'
+                            type='xl'
                             onClose={closeModale}
                         >
+                            {/* TODO: Créer un composant modale content */}
                             <div className="inputs-div">
                                 <input type="text" placeholder="Lasagnes, Pâtes aux oignons..."/>
                                 <select name="type" id="type">
@@ -39,7 +40,7 @@ const Meal = ({meal}: meal) => {
                             <div>
                                 Liste...
                             </div>
-                        </ModaleAddMeal>
+                        </ModaleBase>
                 }
             </div>
         </div>

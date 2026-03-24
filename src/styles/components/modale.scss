@@ -7,7 +7,8 @@
     padding : 15px;
     border-radius: 30px;
     border : 1px solid var.$dark-violet;
-    box-shadow: 4px 4px 0 0 #00000025;
+    // box-shadow: 4px 4px 0 0 #00000025;
+    box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1450980392), inset 0px 0px 16px 7px rgb(37 0 97 / 15%);
     background-color: var.$violet;
     display: flex;
     flex-direction: column;
@@ -17,6 +18,14 @@
     > p{
         text-align: center;
         color : white;
+
+        &.alert{
+            color: var.$red-alert;
+
+            &.green{
+                color: var.$dark-green
+            }
+        }
     }
 }
 
@@ -51,7 +60,7 @@ nav#mobile{
 
 .modale.add{
     position:fixed !important;
-    inset : 15px;
+    inset : 15px ;
 
     #title-div{
         display: flex;
@@ -114,6 +123,22 @@ nav#mobile{
     button.plus{
         width: 24px;
     }
+}
+
+.modale.s{
+    #title-div{
+        padding-bottom : 5px;
+
+        *{
+            font-size: 16px;
+        }
+    }
+    inset: 135px 45px 19px 45px;
+
+    p.alert{
+        margin-top : 5px
+    }
+
 }
 
 .background-modale{
