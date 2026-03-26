@@ -68,7 +68,15 @@ const Login = () => {
             <form onSubmit={submitForm}>
                 <div>
                     <label htmlFor="username" className="visually-hidden">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" className={`${error?.input.includes('username') && "error-input"}`} value={formData.username} onChange={handleChangeForm}/>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        id="username" 
+                        placeholder="Nom d'utilisateur" 
+                        className={`${error?.input.includes('username') && "error-input"}`} 
+                        value={formData.username} 
+                        onChange={handleChangeForm}
+                    />
                     
                     <label htmlFor="password" className="visually-hidden">Mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="Mot de passe" autoComplete="off" className={`${error?.input.includes('password') && "error-input"}`} value={formData.password} onChange={handleChangeForm}/>

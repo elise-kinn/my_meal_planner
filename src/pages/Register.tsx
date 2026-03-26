@@ -8,14 +8,14 @@ type form = {
     RGPD: boolean
 }
 
-type error = {
+type ErrorProp = {
     message: string
     input: string[]
 }| null
 
 const Register = () => {
 
-    const [error, setError] = useState<error>(null)
+    const [error, setError] = useState<ErrorProp>(null)
 
     const [formData, setFormData] = useState<form>({
         username: "", 

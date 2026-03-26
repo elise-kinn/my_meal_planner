@@ -141,6 +141,23 @@ nav#mobile{
 
 }
 
+.modale.xl{
+    .alert{
+        margin-top:-13px;
+        margin-left:20px;
+    }
+}
+
+.modale#no-ingredient{
+    inset: 95px 15px 19px 15px;
+    background-color: #7e7791;
+    box-shadow:  inset 0px 0px 16px 7px rgba(0, 0, 0, 0.15);
+    button{
+        width: 80%;
+        justify-content: center;
+    }
+}
+
 .background-modale{
     overflow: hidden;
     position:fixed;

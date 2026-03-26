@@ -119,7 +119,7 @@ a.visible, input[type='submit'], button.visible{
     }
 }
 
-input.error-input{
+input.error-input, select.error-input{
     background-color: $red-alert-backgroud;
     box-shadow: 4px 4px 0 0 #77000025;
 
