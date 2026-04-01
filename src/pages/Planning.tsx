@@ -1,17 +1,23 @@
-import { getWeek } from "date-fns"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../store/store";
+import { getWeek, startOfWeek, addDays, setDefaultOptions } from "date-fns"
+import { fr } from 'date-fns/locale';
+setDefaultOptions({ locale: fr })
 
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+
 import Day from "../components/Day";
-import { useUser } from "../store/store";
 
 const Planning = () => {
     const { isAuthenticated } = useUser()
     const navigate = useNavigate()
 
-    const [week, setWeek] = useState(getWeek(new Date()))
-    const weekDays = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+    const now = new Date()
+
+    const [week, setWeek] = useState(getWeek(now))
+    const startWeek = startOfWeek(now, { weekStartsOn: 1})
+    const weekDays = Array.from({ length: 7 }).map((_, i) => addDays(startWeek, i) )
 
     useEffect(() => {
         if(!isAuthenticated()){
@@ -30,7 +36,10 @@ const Planning = () => {
             <h3>Semaine {week}</h3>
 
             <section>
-                {weekDays.map(day => (<Day day={day} key={day}/>))}
+                {weekDays.map(day => (<Day 
+                    key={day.getDay()}
+                    day={day}
+                />))}
             </section>
         </main>
     )

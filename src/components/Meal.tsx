@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import ModaleBase from "./modales/ModaleBase";
+import ModaleAddInPlanning from "./modales/ModaleAddInPlanning";
 
 type meal = {
-    meal:string
+    mealType:string
+    day:Date
 }
 
-const Meal = ({meal}: meal) => {
+const Meal = ({ mealType, day }: meal) => {
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
     const closeModale = () =>  setIsOpen(false) 
     const openModale = () => setIsOpen(true)
@@ -14,7 +16,7 @@ const Meal = ({meal}: meal) => {
     return (
         <div>
             <div className="title">
-                <h5>{meal}</h5>
+                <h5>{mealType}</h5>
 
                 <button className="invisible-button" onClick={openModale}>
                     <FiPlus />
@@ -27,19 +29,11 @@ const Meal = ({meal}: meal) => {
                             type='xl'
                             onClose={closeModale}
                         >
-                            {/* TODO: Créer un composant modale content */}
-                            <div className="inputs-div">
-                                <input type="text" placeholder="Lasagnes, Pâtes aux oignons..."/>
-                                <select name="type" id="type">
-                                    <option value="0">Par ordre alphabétique</option>
-                                    <option value="1">Par type</option>
-                                    <option value="3">Par date de création</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                Liste...
-                            </div>
+                            <ModaleAddInPlanning 
+                                day={day}
+                                mealType={mealType}
+                                onClose={closeModale}
+                            />                            
                         </ModaleBase>
                 }
             </div>

@@ -35,14 +35,18 @@ const ModaleAddMealContent = () => {
     const [ selectedType, setSelectedType ] = useState<string>('0')
     const onChangeSelect: React.ChangeEventHandler<HTMLSelectElement> = (e) => { 
         setSelectedType(e.target.value) 
-
     }
 
     const [ types, setTypes ] = useState<TypesProp>([])
     
     const fetchAllTypes = useCallback(async () => {
         try {
-            const res = await fetch(`${import.meta.env.VITE_API_URL}/types/${id_user}`)
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/types/${id_user}`, {
+                headers:{
+                    "Content-type": "application/json", 
+                    "authorization": `Bearer ${token}`
+                }
+            })
             if(res.status === 400) return  
             if(!res.ok) throw new Error('Error fetch GET types')
 
@@ -51,7 +55,7 @@ const ModaleAddMealContent = () => {
         } catch (error) {
             console.error(error)
         }
-    }, [id_user])
+    }, [id_user, token])
     
     useEffect(() => {fetchAllTypes()}, [fetchAllTypes])
 
@@ -100,7 +104,6 @@ const ModaleAddMealContent = () => {
     const closeConfirmationModale = () => setOpenConfirmation(false)
 
     const handleSubmit = async(confirmation:boolean) => {
-
         if(!confirmation){
             const isEveryIngredientEmpty = ingredientsForms.every(ingredient => ingredient.trim() === '')
             const isMealTitleEmpty = mealTitle === ''
@@ -120,6 +123,10 @@ const ModaleAddMealContent = () => {
     
             const data = await res.json()
             if(!res.ok) setError({ message: data.message, input: data.alertInput})
+
+            setIngredientsForms([''])
+            setMealTitle('')
+            setSelectedType('0')
             
         } catch (error) {
             console.error(error)
@@ -137,7 +144,7 @@ const ModaleAddMealContent = () => {
             <label htmlFor="meal" className="visually-hidden">Nom du plat</label>
             <input 
                 id='meal' 
-                className={`${error?.input.includes('title') && "error-input"}`} 
+                className={`${error?.input?.includes('title') && "error-input"}`} 
                 type="text" 
                 placeholder="Lasages, Pâtes aux oignons" 
                 onChange={handleMealTiteChange} 
@@ -149,7 +156,7 @@ const ModaleAddMealContent = () => {
             <div>
                 <select 
                     id="type" 
-                    className={`${error?.input.includes('select') && "error-input"}`} 
+                    className={`${error?.input?.includes('select') && "error-input"}`} 
                     name="type" 
                     onClick={fetchAllTypes} 
                     value={selectedType} 
@@ -171,9 +178,9 @@ const ModaleAddMealContent = () => {
                 {
                     isOpen && 
                     <ModaleBase 
-                    title='Ajouter un type' 
-                    type='s'
-                    onClose={closeModale}
+                        title='Ajouter un type' 
+                        type='s'
+                        onClose={closeModale}
                     >
                         <ModaleAddTypeContent />
                     </ModaleBase>
@@ -204,6 +211,8 @@ const ModaleAddMealContent = () => {
                 closeModale={closeConfirmationModale}
             />
         }
+
+        {/* TODO: Ajouter un + en bas des inputs */}
 
         <button className="visible violet" onClick={() => handleSubmit(false)}>
             <FiPlus/>

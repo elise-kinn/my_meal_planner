@@ -12,8 +12,6 @@ function ModaleBase({ title, type, onClose, children }: ModaleProp){
     const modaleRoot = document.querySelector('#modale-root')
     if(!modaleRoot) return null
 
-    // const [ formData, setFormData ] = useState<T>()
-
     return ( 
         createPortal(
             <>
@@ -25,14 +23,9 @@ function ModaleBase({ title, type, onClose, children }: ModaleProp){
                      </button>
                 </div>
 
-                {children}
-
-                {/* <button className="visible violet" onClick={handleClick}>
-                    <FiPlus/>
-                    {button}
-                </button> */}
-                    
+                {children}                    
             </div>
+
             <div onClick={onClose} className="background-modale"/>
             </>, modaleRoot
         )

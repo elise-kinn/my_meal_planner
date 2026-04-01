@@ -1,4 +1,8 @@
 @use '../variables.scss' as var;
+ @keyframes wriggle { 
+    from { transform: translateX(0px) }             
+    to { transform: translateX(2px) } 
+  }
 
 .modale{
     position:absolute;
@@ -145,6 +149,66 @@ nav#mobile{
     .alert{
         margin-top:-13px;
         margin-left:20px;
+    }
+
+    #id-list{
+        li{
+            box-shadow: inset 0px 0px 9px 3px #443a5382;
+            
+            padding : 4px 15px;
+            background-color: #9283bd;
+            
+            border: 1px solid #ffffff33;
+            border-top: none;
+            
+            button{
+                color: white;
+                font-weight: 100;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+
+                span{
+                    font-size: 11px;
+                    background-color: #4a736a;
+                    color: white;
+                    border-radius: 15px;
+                    padding : 0 5px;
+                }
+            }
+
+            &:first-of-type{
+                border-top-left-radius:15px ;
+                border-top-right-radius: 15px;
+                border-top: 1px solid #ffffff33;
+            }
+
+            &:last-of-type{
+                border-bottom-left-radius:15px ;
+                border-bottom-right-radius: 15px;
+            }
+
+            &:hover {
+                background-color: #a394cf;
+                box-shadow: inset 0px 0px 12px 4px #443a53a6, 0px 4px 15px rgba(0,0,0,0.2);
+            }
+
+            &.alert-meal{
+                background-color: #eb97a7;
+
+                button{
+                    color: var.$red-alert;
+                    animation: wriggle 100ms 4 alternate;
+
+
+                    span{
+                        background-color: #734a5b;
+                    }
+                }
+            }
+        }
     }
 }
 

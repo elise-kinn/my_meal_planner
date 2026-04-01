@@ -1,16 +1,24 @@
 import Meal from "./Meal"
+import { format } from 'date-fns'
 
 type day = {
-    day:string
+    day:Date
 }
 
-const Day = ({day}: day) => {
-    const mealsNames = ["Déjeuner", "Diner"]
+const Day = ({ day }: day) => {
+    const arrayMealTypes = ["Déjeuner", "Dîner"]
+    const getWeekDay = (day:Date) => format(day, 'EEEE')
+
     return (
         <div>
-            <h4>{day}</h4>
+            <h4>{getWeekDay(day)}</h4>
+            
             <div>
-                {mealsNames.map(meal => ( <Meal meal={meal} key={meal} />))}
+                {arrayMealTypes.map(meal => (<Meal 
+                    key={meal}
+                    day={day}
+                    mealType={meal} 
+                />))}
             </div>
         </div>
     )
