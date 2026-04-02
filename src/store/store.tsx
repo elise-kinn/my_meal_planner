@@ -26,6 +26,7 @@ type viewStore = {
     setCurrentPage: (currentPage:string) => void
 }
 
+
 // Donnée partagée ??
 // Donnée doit survivre à la navigation ?
 // Qui modifie quoi ?
@@ -68,6 +69,6 @@ export const useUser = create<userStore>()(
 export const useView = create<viewStore>()(
     (set) => ({
         currentPage: "Planning",
-        setCurrentPage: (currentPage) => set(({ currentPage }))
+        setCurrentPage: (currentPage) => set({ currentPage })
     })
 )

@@ -97,7 +97,6 @@ const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
         }
         
     }
-    console.log(alertId)
         
     return (
         <>
