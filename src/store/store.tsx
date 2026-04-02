@@ -24,8 +24,15 @@ type tokenProp = {
 type viewStore = {
     currentPage: string 
     setCurrentPage: (currentPage:string) => void
+    mealsPlanned: MealsProp[]
+    setMealsPlanned: (mealsPlanned:MealsProp[]) => void
 }
 
+type MealsProp = {
+    name_meal:string
+    date:string
+    type_meal:string
+}
 
 // Donnée partagée ??
 // Donnée doit survivre à la navigation ?
@@ -69,6 +76,9 @@ export const useUser = create<userStore>()(
 export const useView = create<viewStore>()(
     (set) => ({
         currentPage: "Planning",
-        setCurrentPage: (currentPage) => set({ currentPage })
+        setCurrentPage: (currentPage) => set({ currentPage }),
+
+        mealsPlanned:[],
+        setMealsPlanned: (mealsPlanned) => set({mealsPlanned})
     })
 )

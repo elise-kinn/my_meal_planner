@@ -1,5 +1,5 @@
 import { useEffect, useState, type ChangeEventHandler, type MouseEventHandler } from "react";
-import { useUser } from "../../store/store";
+import { useUser, useView } from "../../store/store";
 import { format } from "date-fns";
 
 type MealsProp = {
@@ -16,6 +16,7 @@ type ModaleProp = {
 
 const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
     const { token } = useUser()
+    const { setMealsPlanned, mealsPlanned } = useView()
 
     const formatedDate = format(day, 'yyyy-MM-dd')
 
@@ -88,8 +89,8 @@ const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
             if(res.status === 500) throw new Error('Error POST service')
             
             const data = await res.json()
+            setMealsPlanned([...mealsPlanned, data])
             if(res.status === 400) return setAlertId(data) 
-            
             onClose()
             
         } catch (error) {

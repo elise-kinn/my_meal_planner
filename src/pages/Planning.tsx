@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../store/store";
+import { useUser, useView } from "../store/store";
 import { getWeek, startOfWeek, addDays, setDefaultOptions, format } from "date-fns"
 import { fr } from 'date-fns/locale';
 setDefaultOptions({ locale: fr })
@@ -17,6 +17,7 @@ type MealProp = {
 
 const Planning = () => {
     const { isAuthenticated, token } = useUser()
+    const { setMealsPlanned, mealsPlanned } = useView()
     const navigate = useNavigate()
 
     const now = new Date()
@@ -33,9 +34,10 @@ const Planning = () => {
         return meals.filter( meal => meal.date === getFormatedDate(day))
     }
 
-    const [ meals, setMeals ] = useState<MealProp[]>([])
+    // const [ meals, setMealsPlanned ] = useState<MealProp[]>([])
 
     const fetchMealsOfTheService = useCallback(async () => {
+        setMealsPlanned([])
         try {
             const res = await fetch(`${import.meta.env.VITE_API_URL}/services?start=${firstDayFormated}&end=${lastDayFormated}`, {
                 headers:{
@@ -46,11 +48,12 @@ const Planning = () => {
             if(!res.ok) throw new Error('ERROR GET MEALS_USERS')
             
             const data = await res.json()
-            setMeals(data)
+            // setMealsPlanned(data)
+            setMealsPlanned(data)
         } catch (error) {
             console.error(error)
         }
-    },[token, firstDayFormated, lastDayFormated])
+    },[token, firstDayFormated, lastDayFormated, setMealsPlanned])
 
     useEffect( () => { fetchMealsOfTheService() }, [fetchMealsOfTheService])
 
@@ -59,7 +62,7 @@ const Planning = () => {
             navigate('/')
         }
     })
-
+    
     return(
         <main id="planning">
             <div id="div-title">
@@ -74,7 +77,7 @@ const Planning = () => {
                 {weekDays.map(day => (<Day 
                     key={day.getDay()}
                     day={day}
-                    meals={getMealsOfTheDay(day, meals)}
+                    meals={getMealsOfTheDay(day, mealsPlanned)}
                 />))}
             </section>
         </main>
