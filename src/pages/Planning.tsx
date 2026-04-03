@@ -10,6 +10,7 @@ import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
 import Day from "../components/Day";
 
 type MealProp = {
+    id_meal_user: number
     name_meal: string
     type_meal: string
     date: string
@@ -34,8 +35,6 @@ const Planning = () => {
         return meals.filter( meal => meal.date === getFormatedDate(day))
     }
 
-    // const [ meals, setMealsPlanned ] = useState<MealProp[]>([])
-
     const fetchMealsOfTheService = useCallback(async () => {
         setMealsPlanned([])
         try {
@@ -48,7 +47,6 @@ const Planning = () => {
             if(!res.ok) throw new Error('ERROR GET MEALS_USERS')
             
             const data = await res.json()
-            // setMealsPlanned(data)
             setMealsPlanned(data)
         } catch (error) {
             console.error(error)
@@ -62,7 +60,7 @@ const Planning = () => {
             navigate('/')
         }
     })
-    
+
     return(
         <main id="planning">
             <div id="div-title">

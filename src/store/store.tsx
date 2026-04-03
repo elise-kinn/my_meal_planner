@@ -29,6 +29,7 @@ type viewStore = {
 }
 
 type MealsProp = {
+    id_meal_user: number
     name_meal:string
     date:string
     type_meal:string

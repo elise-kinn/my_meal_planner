@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import ModaleBase from "./modales/ModaleBase";
 import ModaleAddInPlanning from "./modales/ModaleAddInPlanning";
+import MealLine from "./MealLine";
 
 type Prop = {
     mealType:string
@@ -10,8 +11,10 @@ type Prop = {
 }
 
 type MealProp = {
+    id_meal_user: number
     name_meal:string
     type_meal: string
+    date:string
 }
 
 const Meal = ({ mealType, day, meals }: Prop) => {
@@ -20,7 +23,7 @@ const Meal = ({ mealType, day, meals }: Prop) => {
     const closeModale = () =>  setIsOpen(false) 
     const openModale = () => setIsOpen(true)
 
-    return (
+        return (
         <div>
             <div className="title">
                 <h5>{mealType}</h5>
@@ -43,12 +46,12 @@ const Meal = ({ mealType, day, meals }: Prop) => {
                     </ModaleBase>
                 }
             </div>
-            
-            {meals.map( meal => (
-                <div key={meal.name_meal}>
-                    {meal.name_meal}
-                </div>
-            ))}
+
+            <ul>
+                {meals.map( meal => (
+                    <MealLine meal={meal} key={meal.name_meal}/>
+                ))}
+            </ul>
 
         </div>
     )
