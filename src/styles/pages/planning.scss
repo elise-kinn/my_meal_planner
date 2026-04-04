@@ -38,6 +38,7 @@
             }
 
             > div {
+                overflow: hidden;
                 background-color: var.$beige;
                 border-radius: 12px;
                 padding : 0 15px;
@@ -78,15 +79,35 @@
 
                         button{
                             display: flex;
-                            background-color: var.$red-alert-backgroud;
                             align-items: center;
                             justify-content: center;
-                            width: 25px;
+                            border-radius: 4px;
+                            margin-left: 2px;
+                            
+                            &.bin{
+                                background-color: var.$red-alert-backgroud; 
+                                
+                                &:hover{
+                                    background-color: #d47c8c;
+                                }
+                            }
+
+                            &.pen{
+                                background-color: var.$dark-beige; 
+                                
+                                &:hover{
+                                    background-color: #e9c9a3;
+                                }
+                            }
 
                             i{
                                 overflow:hidden;
                                 display: flex;
                                 padding: 0 5px;
+                            }
+                            
+                            &:hover{
+                                transform:scale(0.95)
                             }
                         }
                     }
