@@ -76,7 +76,7 @@ export const useUser = create<userStore>()(
 
 export const useView = create<viewStore>()(
     (set) => ({
-        currentPage: "Planning",
+        currentPage: "",
         setCurrentPage: (currentPage) => set({ currentPage }),
 
         mealsPlanned:[],

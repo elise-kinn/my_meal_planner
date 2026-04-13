@@ -54,18 +54,30 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        padding-bottom : 5px;
     
                         h5{
                             font-weight: 300;
                         }
 
-                        svg{
-                            font-size: 17px;
+                        button{
+                            border-radius: 6px;
+                            padding: 2px;
+                            color: #473D63;
+                            background-color: rgb(134 115 187 / 25%);
+
+                            
+                            svg{
+                                font-size: 17px;
+                                
+                            }
 
                             &:hover{
-                                color : var.$green;
+                                background-color: #97dc8740;
+                                color : var.$dark-green;
                             }
                         }
+
 
                     }
 
@@ -73,8 +85,11 @@
                         display: flex;
                         justify-content: space-between;
 
-                        p{
+                        div{
                             width: 100%;
+                            display: flex;
+                            gap : 10px;
+                            align-items: center;
                         }
 
                         button{

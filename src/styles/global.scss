@@ -4,6 +4,7 @@
 @use 'footer.scss';
 @use 'pages/login.scss';
 @use 'pages/planning.scss';
+@use 'pages/meal-list.scss';
 @use 'components/modale.scss';
 
 *, ::before, ::after {
@@ -92,8 +93,17 @@ a.visible, input[type='submit'], button.visible{
     }
 }
 
+button.small-button{
+    background-color: #5b4e7e;
+    padding: 5px;
+    border-radius: 9px;
 
-.small-button{
+    &:hover{
+        background-color: #695a92;
+    }
+}
+
+.medium-button{
     width: fit-content;
     margin: auto;
 }
@@ -126,4 +136,10 @@ input.error-input, select.error-input{
     &::placeholder{
         color:rgba(0, 0, 0, 0.575)
     }
+}
+
+.spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,9 +1,11 @@
+import { useRef, useEffect, type RefObject } from "react";
 import { motion, useMotionValue, useTransform, useMotionValueEvent, MotionValue } from "motion/react"
 import { useUser, useView } from "../store/store";
 
 import { ImBin } from "react-icons/im";
+import { GrStatusPlaceholder } from "react-icons/gr";
 import { FaRegPenToSquare } from "react-icons/fa6";
-import { useRef, useEffect, type RefObject } from "react";
+
 
 type MealLineProp = {
     meal:{
@@ -64,14 +66,15 @@ const MealLine = ({ meal }: MealLineProp) => {
 
     return (
         <li ref={wrapperRef}>
-            <motion.p
+            <motion.div
                 drag="x"
                 dragConstraints={{ left: -25, right: 0 }}
                 style={{ opacity, x }}
                 
             >
-                {meal.name_meal}
-            </motion.p>
+                <GrStatusPlaceholder/>
+                <p>{meal.name_meal}</p>
+            </motion.div>
 
             <motion.button 
                 className="pen invisible-button"

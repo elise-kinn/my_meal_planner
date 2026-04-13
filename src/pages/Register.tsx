@@ -77,7 +77,7 @@ const Register = () => {
 
                     {error?.input.includes('RGPD') && <p className="alert red">Accepter les conditions d'utilisation du site est obligatoire pour créer un compte</p>}
                     
-                    <input type="submit" className="green small-button" value="S'inscrire"/>
+                    <input type="submit" className="green medium-button" value="S'inscrire"/>
                 </div>
 
                 <Link to='/' className="visible violet">Déjà un compte ? Se connecter</Link>

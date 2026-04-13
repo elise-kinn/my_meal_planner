@@ -13,8 +13,8 @@ const ModaleConfirmation = ({ text, button1Text, button2Text, onConfirm, closeMo
         <>
         <div className="modale" id={name}>
             <p>{text}</p>
-            <button className='visible green' onClick={onConfirm}>{button1Text}</button>
-            <button className='visible violet' onClick={closeModale}>{button2Text}</button>
+            <button className='visible violet' onClick={onConfirm}>{button1Text}</button>
+            <button className='visible green' onClick={closeModale}>{button2Text}</button>
         </div>
         <div onClick={closeModale} className="background-modale"/>
         </>

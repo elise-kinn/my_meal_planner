@@ -1,0 +1,17 @@
+#meal-list{
+    // TODO: Duplication de code !
+    .visible.violet{ 
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: fit-content;
+        margin: auto;
+    }
+
+    >div:first-of-type{
+        display: flex;
+        flex-direction: column;
+        gap : 15px;
+        padding : 25px 0
+    }
+}

@@ -7,6 +7,7 @@ type Day = {
 }
 
 type MealProp = {
+    id_meal_user: number
     name_meal:string
     type_meal: string
     date:string

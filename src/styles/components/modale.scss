@@ -1,8 +1,8 @@
 @use '../variables.scss' as var;
- @keyframes wriggle { 
-    from { transform: translateX(0px) }             
+@keyframes wriggle { 
+    from { transform: translateX(0px) }
     to { transform: translateX(2px) } 
-  }
+}
 
 .modale{
     position:absolute;
@@ -10,8 +10,7 @@
     margin: auto;
     padding : 15px;
     border-radius: 30px;
-    border : 1px solid var.$dark-violet;
-    // box-shadow: 4px 4px 0 0 #00000025;
+    // border : 1px solid var.$dark-violet;
     box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1450980392), inset 0px 0px 16px 7px rgb(37 0 97 / 15%);
     background-color: var.$violet;
     display: flex;
@@ -110,7 +109,7 @@ nav#mobile{
             }
 
             svg{
-                font-size: 24px;
+                font-size: 20px;
                 color: white;
             }
         }
@@ -124,8 +123,8 @@ nav#mobile{
         margin: auto;
     }
 
-    button.plus{
-        width: 24px;
+    .empty-space{
+        width: 30px;
     }
 }
 
@@ -152,60 +151,65 @@ nav#mobile{
     }
 
     #id-list{
-        li{
-            box-shadow: inset 0px 0px 9px 3px #443a5382;
-            
-            padding : 4px 15px;
-            background-color: #9283bd;
-            
-            border: 1px solid #ffffff33;
+        li {
+            list-style: none;
+            background-color: var.$beige;
+            border: 1px solid rgba(33, 0, 57, 0.15); 
             border-top: none;
-            
-            button{
-                color: white;
-                font-weight: 100;
-                font-size: 16px;
+
+            button {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
+                box-sizing: border-box;
+                padding: 12px 15px; 
+                font-weight: 400; 
+                font-size: 16px;
+                color: #210039;
+                text-align: left ;
 
-                span{
+                span {
                     font-size: 11px;
+                    font-weight: 600;
                     background-color: #4a736a;
                     color: white;
-                    border-radius: 15px;
-                    padding : 0 5px;
+                    border-radius: 20px;
+                    padding: 2px 10px;
+                    line-height: 1;
                 }
             }
 
-            &:first-of-type{
-                border-top-left-radius:15px ;
+            &:first-of-type {
+                border-top-left-radius: 15px;
                 border-top-right-radius: 15px;
-                border-top: 1px solid #ffffff33;
+                border-top: 1px solid rgba(33, 0, 57, 0.15);
             }
 
-            &:last-of-type{
-                border-bottom-left-radius:15px ;
+            &:last-of-type {
+                border-bottom-left-radius: 15px;
                 border-bottom-right-radius: 15px;
             }
 
             &:hover {
-                background-color: #a394cf;
-                box-shadow: inset 0px 0px 12px 4px #443a53a6, 0px 4px 15px rgba(0,0,0,0.2);
+                background-color: #fdf8f2; 
             }
 
-            &.alert-meal{
-                background-color: #eb97a7;
+            &.alert-meal {
+                background-color: #fce4e4; 
+                border-color: rgba(186, 45, 73, 0.2);
 
-                button{
-                    color: var.$red-alert;
-                    animation: wriggle 100ms 4 alternate;
+                button {
+                    color: #734a5b; // Ton sur ton avec l'alerte
+                    animation: wriggle 150ms 4 alternate;
 
-
-                    span{
+                    span {
                         background-color: #734a5b;
                     }
+                }
+
+                &:hover {
+                    background-color: #f9dada;
                 }
             }
         }

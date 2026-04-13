@@ -26,6 +26,8 @@ const ModaleAddMealContent = () => {
     const [ mealTitle, setMealTitle] = useState<string>('')
     const handleMealTiteChange: ChangeEventHandler<HTMLInputElement> = (e) => {
         setMealTitle(e.target.value)
+        if(!error) return
+        setError({ ...error, input: error.input.filter( input => input !== 'title' ) })
     }
 
     const [ isOpen, setIsOpen ] = useState<boolean>(false)
@@ -35,6 +37,8 @@ const ModaleAddMealContent = () => {
     const [ selectedType, setSelectedType ] = useState<string>('0')
     const onChangeSelect: React.ChangeEventHandler<HTMLSelectElement> = (e) => { 
         setSelectedType(e.target.value) 
+        if(!error) return
+        setError({ ...error, input: error.input.filter( input => input !== 'select' ) })
     }
 
     const [ types, setTypes ] = useState<TypesProp>([])
@@ -87,11 +91,13 @@ const ModaleAddMealContent = () => {
                     <label htmlFor={`ingredient-${i}`} className="visually-hidden">Ingrédient {i}</label>
                     <input type="text" id={`ingredient-${i}`} placeholder={`Ingrédient ${i}`} value={ingredientsForms[i - 1]} onChange={handleChangeIngredientInput(i - 1)}/>
 
-                    <button className="invisible-button plus" onClick={delIngredientInput(i - 1)}>
-                        {i >= 2 &&
-                            <FaMinus />
-                        }
-                    </button>
+                    {
+                        i >= 2 
+                        ? <button className="invisible-button small-button" onClick={delIngredientInput(i - 1)}>
+                                <FaMinus />
+                        </button>
+                        : <div className="empty-space"/>
+                    }
 
                 </div>
             )
@@ -171,7 +177,7 @@ const ModaleAddMealContent = () => {
                 </select>
 
 
-                <button className="invisible-button" onClick={openModale}>
+                <button className="invisible-button small-button" onClick={openModale}>
                     <FaPlus />
                 </button>
 
@@ -193,7 +199,7 @@ const ModaleAddMealContent = () => {
         <div className="inputs-div">
             <div>
                 <h3>Ingrédients</h3>
-                <button className='invisible-button' onClick={addIngredientInput}>
+                <button className='invisible-button small-button' onClick={addIngredientInput}>
                     <FaPlus />
                 </button>
             </div>

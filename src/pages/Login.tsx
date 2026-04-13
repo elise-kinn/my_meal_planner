@@ -83,7 +83,7 @@ const Login = () => {
 
                     {error && <p className="alert red">{error.message}</p>}
 
-                    <input type="submit" className="green small-button" value="Se connecter"/>
+                    <input type="submit" className="green medium-button" value="Se connecter"/>
                 </div>
 
                 <Link to='/register' className="visible violet">Pas de compte ? S'inscrire</Link>

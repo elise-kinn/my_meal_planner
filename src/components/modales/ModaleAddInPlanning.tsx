@@ -1,6 +1,9 @@
 import { useEffect, useState, type ChangeEventHandler, type MouseEventHandler } from "react";
 import { useUser, useView } from "../../store/store";
 import { format } from "date-fns";
+import { Riple } from 'react-loading-indicators'
+
+import { LuArrowDownUp } from "react-icons/lu";
 
 type MealsProp = {
     id_meal: number
@@ -45,15 +48,20 @@ const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
     const handleChangeSelect : ChangeEventHandler<HTMLSelectElement> = (e) => {
         setSelectedOption(e.target.value)
     }
+
+    const [ sort, setSort ] = useState<string>('desc')
+    const handleClickSort = () => setSort( sort === 'desc' ? 'asc' : 'desc')
     
     const [ meals, setMeals ] = useState<MealsProp>([])
 
-    //handle seach input
+    const [ loading, setLoading ] = useState<boolean>(true)
+
+    // handle seach
     useEffect(() => {
         const timer = setTimeout(async () => {
             try {
-
-                const res = await fetch(`${import.meta.env.VITE_API_URL}/meals?search=${searchInput}&order=${selectedOption}` , {
+                setLoading(true)
+                const res = await fetch(`${import.meta.env.VITE_API_URL}/meals?search=${searchInput}&order=${selectedOption}&sort=${sort}` , {
                     headers: {
                         "Content-type": "application/json",
                         "authorization": `Bearer ${token}`
@@ -66,12 +74,14 @@ const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
                 
             } catch (error) {
                 console.error(error);
+            }finally{
+                setLoading(false)
             }
         }, 250); 
 
         return () => clearTimeout(timer);
         
-    }, [searchInput, token, selectedOption]); 
+    }, [ searchInput, token, selectedOption, sort ]); 
 
     const handleAddMeal: MouseEventHandler<HTMLButtonElement> = async(e) => {
         const idMeal = e.currentTarget.id
@@ -111,26 +121,36 @@ const ModaleAddInPlanning = ({ day, mealType, onClose }: ModaleProp) => {
                 onChange={handleOnChangeSearchInput}
             />
 
-            <select name="type" id="type" onChange={handleChangeSelect} value={selectedOption}>
-                {optionsArray.map( (option) => (
-                    <option value={option.order_by} key={option.order_by}>{option.text}</option>
-                ))}
-            </select>
+            <div>
+                <select name="type" id="type" onChange={handleChangeSelect} value={selectedOption}>
+                    {optionsArray.map( (option) => (
+                        <option value={option.order_by} key={option.order_by}>{option.text}</option>
+                    ))}
+                </select>
+
+                <button className="invisible-button small-button" onClick={handleClickSort}>
+                    <LuArrowDownUp />
+                </button>
+            </div>
         </div>
 
         <ul id="id-list">
-            {meals.map( meal => (
-                <li key={meal.name_meal} className={`${alertId === meal.id_meal ? 'alert-meal' : ''}`} >
-                    <button 
-                        className='invisible-button'
-                        id={`${meal.id_meal}`} 
-                        onClick={handleAddMeal}
-                    >
-                        {meal.name_meal}
-                        <span>{meal.name_type}</span>
-                    </button>
-                </li>
-            ))}
+            {loading 
+                ? <div className="spinner"><Riple color="#2a085c" size="small" /></div>
+                : meals.map( meal => (
+                    <li key={meal.name_meal} className={`${alertId === meal.id_meal ? 'alert-meal' : ''}`} >
+                        <button 
+                            className='invisible-button'
+                            id={`${meal.id_meal}`} 
+                            onClick={handleAddMeal}
+                        >
+                            {meal.name_meal}
+                            <span>{meal.name_type}</span>
+                        </button>
+                    </li>
+                ))
+            }
+            {}
         </ul>
         </>
     )
